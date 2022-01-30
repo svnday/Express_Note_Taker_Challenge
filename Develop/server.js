@@ -18,6 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
+// get methods to pull in note data from db
+
 app.get('/notes', function(req, res) {
     res.sendFile(path.join(mainPath, 'notes.html'));
 });
