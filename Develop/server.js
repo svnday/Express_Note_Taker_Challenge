@@ -26,10 +26,10 @@ app.get('*', function(req, res) {
 });
 
 app.post('/api/notes', function(req, res) {
-    const savedNotes = JSON.parse(fs.readFileSync('./db/db.json'));
-    const newNote = req.body;
+    var savedNotes = JSON.parse(fs.readFileSync('./db/db.json'));
+    var newNote = req.body;
 
-    const noteId = (savedNotes.length).toString();
+    var noteId = (savedNotes.length).toString();
     newNote.id = noteId;
     savedNotes.push(newNote);
 
@@ -38,7 +38,23 @@ app.post('/api/notes', function(req, res) {
     res.json(savedNotes);
 });
 
+app.delete('/api/notes/:id', function(req, res) {
+    var savedNotes = JSON.parse(fs.readFileSync('./db/db.json'));
+    var noteID = req.params.id;
+    var newID = 0;
 
+    savedNotes = savedNotes.filter(currentNote => {
+        return currentNote.id != noteID;
+    })
+
+    for (currentNote of savedNotes) {
+        currentNote.id = newID.toString();
+        newID++;
+    }
+    
+    fs.writeFileSync('./db/db.json', JSON.stringify(savedNotes));
+    return res.json(savedNotes);
+});
 
 
 app.listen(PORT, function() {
