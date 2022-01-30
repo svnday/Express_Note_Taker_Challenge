@@ -32,6 +32,6 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 ____________________________________________________________________________________________________
 
 
-Link to repository: [https://github.com/svnday/Express_Note_Taker_Challenge](https://github.com/svnday/Express_Note_Taker_Challenge)
+Link to repository: [https://github.com/svnday/Express_Note_Taker_Challenge](https://github.com/svnday/Express_Note_Taker_Challenge)  
 Link to deployed application on Heroku: [https://calm-tor-32756.herokuapp.com/](https://calm-tor-32756.herokuapp.com/)
 
