@@ -25,6 +25,21 @@ app.get('*', function(req, res) {
     res.sendFile(path.join(mainPath, 'index.html'));
 });
 
+app.post('/api/notes', function(req, res) {
+    const savedNotes = JSON.parse(fs.readFileSync('./db/db.json'));
+    const newNote = req.body;
+
+    const noteId = (savedNotes.length).toString();
+    newNote.id = noteId;
+    savedNotes.push(newNote);
+
+    fs.writeFileSync('./db/db.json', JSON.stringify(savedNotes));
+
+    res.json(savedNotes);
+});
+
+
+
 
 app.listen(PORT, function() {
     console.log('App listening on PORT: ' + PORT);
